@@ -4,6 +4,8 @@ env:
   CI: false
   IMAGE_TAG: latest
   BOARD: ESP32_GENERIC_C3
+  FREEZE_BOOT: false
+  FREEZE_MAIN: false
 on:
   push:
     branches:
@@ -50,8 +52,8 @@ jobs:
             -e HOST_UID=${{ steps.runner_ids.outputs.uid }} \
             -e HOST_GID=${{ steps.runner_ids.outputs.gid }} \
             -e PROJECT_DIR=/project \
-            -e BOARD=${{ vars.BOARD }} \
-            -e FREEZE_BOOT=${{ vars.FREEZE_BOOT }} \
-            -e FREEZE_MAIN=${{ vars.FREEZE_MAIN }} \
+            -e BOARD=${{ env.BOARD }} \
+            -e FREEZE_BOOT=${{ env.FREEZE_BOOT }} \
+            -e FREEZE_MAIN=${{ env.FREEZE_MAIN }} \
             -v "$PWD:/project" \
             rav3nh01m/micropython_esp-idf:${{ steps.docker_tag.outputs.image_tag }}
