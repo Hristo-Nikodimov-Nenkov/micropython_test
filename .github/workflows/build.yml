@@ -3,7 +3,7 @@ name: Build and release
 env:
   CI: false
   IMAGE_TAG: latest
-
+  BOARD: ESP32_GENERIC_C3
 on:
   push:
     branches:
@@ -50,7 +50,6 @@ jobs:
             -e HOST_UID=${{ steps.runner_ids.outputs.uid }} \
             -e HOST_GID=${{ steps.runner_ids.outputs.gid }} \
             -e PROJECT_DIR=/project \
-            -e PORT=${{ vars.PORT }} \
             -e BOARD=${{ vars.BOARD }} \
             -e FREEZE_BOOT=${{ vars.FREEZE_BOOT }} \
             -e FREEZE_MAIN=${{ vars.FREEZE_MAIN }} \
