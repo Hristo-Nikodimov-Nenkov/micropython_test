@@ -32,8 +32,7 @@ jobs:
         id: docker_image
         run: |
           IMAGE_BASE="rav3nh01m/micropython_esp-idf"
-          REQUESTED_TAG="${{ vars.IMAGE_TAG }}"
-          IMAGE="$IMAGE_BASE:$REQUESTED_TAG"
+          IMAGE="$IMAGE_BASE:${{ vars.IMAGE_TAG }}"
 
           echo "Checking for image: $IMAGE"
 
